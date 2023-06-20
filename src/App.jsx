@@ -1,4 +1,9 @@
 // IMPORT ANY NEEDED COMPONENTS HERE
+import React from 'react';
+import Header from "./components/Header/Header";
+import Instructions from "./components/Instructions/Instructions";
+import Chip from "./components/Chip/Chip";
+
 import { Dataset } from "./data/dataset"
 import "./App.css"
 
@@ -17,7 +22,7 @@ export const appInfo = {
   },
 }
 // or this!
-
+// map is used to iterate through a list. You only use index when referencing to a particular object in the list
 export function App() {
   const { data, categories, restaurants } = Dataset.createDataSet()
 
@@ -28,20 +33,36 @@ export function App() {
         <div className="categories options">
           <h2 className="title">Categories</h2>
           {/* YOUR CODE HERE */}
+          <div>
+  {categories.map((category) => (
+    <Chip key={category}>{category}</Chip>
+  ))}
+</div>
         </div>
       </div>
 
       {/* MAIN COLUMN */}
       <div className="container">
         {/* HEADER GOES HERE */}
+        <div className="header">
+          <Header header = {appInfo} />
+        </div>
 
         {/* RESTAURANTS ROW */}
         <div className="RestaurantsRow">
           <h2 className="title">Restaurants</h2>
-          <div className="restaurants options">{/* YOUR CODE HERE */}</div>
+          <div className="restaurants options">
+            {/* YOUR CODE HERE */}
+            {restaurants.map((restaurant) => (
+    <Chip key={restaurant}>{restaurant}</Chip>
+  ))}
+            </div>
         </div>
 
         {/* INSTRUCTIONS GO HERE */}
+        <div className="instructions"> 
+          <Instructions instructions = {appInfo}/>
+        </div>
 
         {/* MENU DISPLAY */}
         <div className="MenuDisplay display">
