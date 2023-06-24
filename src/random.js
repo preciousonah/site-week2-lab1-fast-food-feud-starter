@@ -1,3 +1,23 @@
+import "./Chip.css"
+
+export function Chip({ label = "", isActive = false }) {
+  const buttonClassName = isActive ? "chip active" : "chip";
+  
+  return (
+    <button className={buttonClassName}>
+      <p className="label">{label}</p>
+      <span className="close" role="button">{`X`}</span>
+    </button>
+  );
+}
+
+
+export default Chip
+
+
+
+//APP.JSX file 
+// IMPORT ANY NEEDED COMPONENTS HERE
 import React from 'react';
 import Header from "./components/Header/Header";
 import Instructions from "./components/Instructions/Instructions";
@@ -35,7 +55,6 @@ export function App() {
           {categories.map((category, index) => (
   <Chip key={index} isActive={category === "Burgers"} label = {category}/>
 ))}
-
 
           {/* YOUR CODE HERE */}
         </div>
@@ -82,3 +101,19 @@ export function App() {
 
 export default App
 
+
+
+//map example 
+const categories = ['Category 1', 'Category 2', 'Category 3'];
+
+const CategoryList = () => {
+  return (
+    <div>
+      {categories.map((category, index) => (
+        <p key={index}>{category}</p>
+      ))}
+    </div>
+  );
+};
+
+export default CategoryList;
